@@ -1,0 +1,29 @@
+.main{
+    width: 1302px;
+    height: 909.21px;
+    display: flex;
+    background-color: #252836;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 60px auto;
+}
+
+.category-tab {
+    @apply flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#b89d9d] pb-[13px] pt-4 text-sm font-bold tracking-[0.015em];
+  }
+  .active-tab {
+    @apply border-b-white text-white;
+  }
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
