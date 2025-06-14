@@ -1,10 +1,3 @@
-RegisterNetEvent('blackmarket:client:openShop', function()
-    SetNuiFocus(true, true)
-    SendNUIMessage({
-        action = "open",
-        categories = Config.Categories
-    })
-end)
 
 RegisterNUICallback('close', function(_, cb)
     SetNuiFocus(false, false)
@@ -37,5 +30,4 @@ RegisterCommand("blackmarket", function()
         products = data
     })
     SetNuiFocus(true, true)
-    --TriggerEvent('blackmarket:client:openShop')
 end)

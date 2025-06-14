@@ -1,38 +1,26 @@
 const data = {
     "Weapons": [
-      { name: "Silenced Pistol", price: "$800", icon: "🔫" },
-      { name: "Assault Rifle", price: "$2500", icon: "🔫" },
-      { name: "Assault Rifle", price: "$2500", icon: "🔫" },
-      { name: "Assault Rifle", price: "$2500", icon: "🔫" },
-      { name: "Assault Rifle", price: "$2500", icon: "🔫" },
-      { name: "Assault Rifle", price: "$2500", icon: "🔫" },
-      { name: "Assault Rifle", price: "$2500", icon: "🔫" },
-      { name: "Assault Rifle", price: "$2500", icon: "🔫" },
-      { name: "Assault Rifle", price: "$2500", icon: "🔫" },
-      { name: "Assault Rifle", price: "$2500", icon: "🔫" },
-      { name: "Assault Rifle", price: "$2500", icon: "🔫" },
-      { name: "Assault Rifle", price: "$2500", icon: "🔫" },
-      { name: "Assault Rifle", price: "$2500", icon: "🔫" },
-      { name: "Assault Rifle", price: "$2500", icon: "🔫" },
-      { name: "Assault Rifle", price: "$2500", icon: "🔫" },
-      { name: "Assault Rifle", price: "$2500", icon: "🔫" },
-      { name: "Assault Rifle", price: "$2500", icon: "🔫" },
+      { name: "Silenced Pistol", price: "$800",stock:50, icon: "assets/WEAPON_ASSAULTRIFLE.png" },
+      { name: "Assault Rifle", price: "$2500",stock:50, icon: "assets/WEAPON_ASSAULTRIFLE.png" },
+      { name: "Assault Rifle", price: "$2500",stock:50, icon: "assets/WEAPON_ASSAULTRIFLE.png" },
+      { name: "Assault Rifle", price: "$2500",stock:50, icon: "assets/WEAPON_ASSAULTRIFLE.png" },
+
     ],
     "Ammo": [
-      { name: "9mm Rounds", price: "$50", icon: "💥" },
-      { name: "5.56mm NATO", price: "$80", icon: "💥" }
+      { name: "9mm Rounds", price: "$50",stock:50, icon: "💥" },
+      { name: "5.56mm NATO", price: "$80",stock:50, icon: "💥" }
     ],
     "Hacking Devices": [
-      { name: "Signal Jammer", price: "$600", icon: "🧰" }
+      { name: "Signal Jammer", price: "$600",stock:50, icon: "🧰" }
     ],
     "Illegal Documents": [
-      { name: "Fake Passport", price: "$1500", icon: "🪪" }
+      { name: "Fake Passport", price: "$1500",stock:50, icon: "🪪" }
     ],
     "Drugs": [
-      { name: "Cocaine Pack", price: "$5000", icon: "💊" }
+      { name: "Cocaine Pack", price: "$5000",stock:50, icon: "💊" }
     ],
     "Smuggled Goods": [
-      { name: "Luxury Watch", price: "$3000", icon: "⌚" }
+      { name: "Luxury Watch", price: "$3000",stock:50, icon: "⌚" }
     ]
   };
 
@@ -57,13 +45,15 @@ const data = {
         itemDiv.className = "bg-[#1e1e1e] border border-[#333] text-white p-4 rounded-xl shadow hover:shadow-lg transition duration-300";
         itemDiv.innerHTML = `
           <div>
-            <div class="text-3xl mb-2">${item.icon}</div>
+            <img src="${item.icon}" alt="${item.name}" class="w-16 h-16 object-contain mb-2 mx-auto" />
             <div class="font-bold text-lg">${item.name}</div>
             <div class="text-sm text-gray-400 mb-4">${item.price}</div>
+            <div class="text-sm text-gray-400 mb-4">${item.stock}</div>
           </div>
-          <button class="mt-auto bg-gradient-to-r from-[#8e2de2] to-[#4a00e0] hover:from-[#4a00e0] hover:to-[#8e2de2] text-white font-semibold py-2 px-4 rounded-xl transition duration-300 ease-in-out hover:scale-105 shadow-md">
-            Buy
+          <button class="bg-gradient-to-r from-[#ff416c] to-[#ff4b2b] hover:from-[#ff4b2b] hover:to-[#ff416c] text-white font-bold py-2 px-4 rounded-xl transition-transform duration-300 hover:scale-105 shadow-md">
+            Add to Cart
           </button>
+
         `;
         itemsContainer.appendChild(itemDiv);
       });
@@ -104,3 +94,10 @@ if (event.key === "Escape") {
   }
 });
 
+
+  const cartButton = document.getElementById("cartToggleButton");
+const cartPanel = document.getElementById("cartPanel");
+
+cartButton.addEventListener("click", () => {
+  cartPanel.classList.toggle("hidden");
+});

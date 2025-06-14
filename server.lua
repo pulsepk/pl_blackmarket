@@ -3,7 +3,7 @@ local QBCore, ESX = nil, nil
 if Config.Framework == "qb" then
     QBCore = exports['qb-core']:GetCoreObject()
 elseif Config.Framework == "esx" then
-    TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+    ESX = exports['es_extended']:getSharedObject()
 end
 
 RegisterServerEvent('blackmarket:server:purchaseItem', function(data)
