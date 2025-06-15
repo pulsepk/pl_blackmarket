@@ -76,7 +76,18 @@
   <div id="cartPanel"
     class="absolute right-0 mt-2 z-50 w-[400px] h-[80vh] bg-[#181111] text-white shadow-xl rounded-xl p-4 overflow-y-auto hidden">
     <h2 class="text-xl font-bold mb-4">Your Cart</h2>
+    <!-- <p class="text-sm text-gray-400">Cart is currently empty.</p> -->
+     <div id="cartContent" class="flex-1 overflow-y-auto space-y-4">
     <p class="text-sm text-gray-400">Cart is currently empty.</p>
+  </div>
+
+    <div class="pt-4 border-t border-[#2e1e1e] mt-4 flex justify-between items-center">
+    <div id="cartTotal" class="text-lg font-bold">$0.00</div>
+    <button id="buyButton"
+      class="bg-gradient-to-r from-[#38b000] to-[#008000] hover:from-[#45c100] hover:to-[#009900] text-white font-bold py-2 px-6 rounded-xl shadow-md transition-transform duration-300 hover:scale-105">
+      Buy
+    </button>
+  </div>
   </div>
 </div>
 
