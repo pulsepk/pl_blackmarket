@@ -1,29 +1,56 @@
 Config = {}
 
--- Framework detection
 Config.Framework = "esx" -- "esx" or "qb"
 
--- Product data (sent to UI)
+Config.Interaction = "ox-target" -- "ox-target","qb-target","textui"
+
+Config.WaterMark = true -- Set to false to disable watermark
+
+Config.Debug = false -- Set to true to enable debug messages
+
+--ESX options: "bank", "cash", "black_money" 
+--QBCore options: "bank", "cash"
+--QBox options: "bank", "cash"
+
+Config.Account = "cash" 
+
 Config.Categories = {
-    weapons = {
-        label = "Weapons",
+    pistols = {
+        label = "Pistol",
         items = {
-            { name = "weapon_pistol", label = "9mm Pistol", price = 2500, stock = 5 },
-            { name = "weapon_knife", label = "Combat Knife", price = 1000, stock = 10 },
+            { name = "weapon_pistol", label = "9mm Pistol", price = 2500, stock = 0 },
+            { name = "weapon_appistol", label = "AP Pistol", price = 2500, stock = 50 },
+            { name = "weapon_combatpistol", label = "Combat Pistol", price = 2500, stock = 50 },
+            { name = "weapon_heavypistol", label = "Heavy Pistol", price = 2500, stock = 50 },
+            { name = "weapon_machinepistol", label = "Machine Pistol", price = 2500, stock = 50 },
+            { name = "weapon_ceramicpistol", label = "Ceramic Pistol", price = 1000, stock = 50 },
+            { name = "weapon_pistolxm3", label = "WM 29 Pistol", price = 1000, stock = 50 },
         }
     },
-    drugs = {
-        label = "Drugs",
+    rifles = {
+        label = "Rifles",
         items = {
-            { name = "weed_pouch", label = "Weed Pack", price = 1500, stock = 20 },
-            { name = "coke_pouch", label = "Cocaine Pack", price = 2000, stock = 15 },
+            { name = "weapon_advancedrifle", label = "Advanced Rifle", price = 2500, stock = 0 },
+            { name = "weapon_assaultrifle", label = "Assault Rifle", price = 2500, stock = 50 },
+            { name = "weapon_assaultrifle_mk2", label = "Assault Rifle MK2", price = 2500, stock = 50 },
+            { name = "weapon_bullpuprifle", label = "Bullpup Rifle", price = 2500, stock = 50 },
+            { name = "weapon_bullpuprifle_mk2", label = "Bullpup Rifle MK2", price = 2500, stock = 50 },
+            { name = "weapon_carbinerifle", label = "Carbine Rifle", price = 1000, stock = 50 },
         }
     },
     tools = {
         label = "Illegal Tools",
         items = {
-            { name = "lockpick", label = "Lockpick Set", price = 800, stock = 25 },
-            { name = "hackerdevice", label = "Hacking Device", price = 5000, stock = 3 },
+            { name = "lockpick", label = "Lockpick Set", price = 800, stock = 1 },
+
         }
     }
+}
+
+Config.BlackMarket = {
+    [1] = {
+        ped = 'a_m_m_og_boss_01',
+        coords = vector3(-939.8207, -1075.2236, 2.1503),
+		heading = 213.8993
+    },
 }

@@ -11,10 +11,11 @@
     <title>Black Market</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   </head>
   <body>
-    <!-- <div id="ui" style="display: none;"> -->
+    <div id="ui" style="display: none;">
     <div class="main">
     <div class="relative flex size-full min-h-screen flex-col bg-[#181111] dark group/design-root overflow-x-hidden" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
       <div class="layout-container flex h-full grow flex-col">
@@ -59,54 +60,50 @@
                 />
               </div>
             </label>
-            
-<div class="relative">
-  <button id="cartToggleButton"
-    class="flex cursor-pointer items-center justify-center rounded-lg h-10 bg-[#382929] text-white gap-2 text-sm font-bold px-4">
-    <div class="text-white">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-        <path
-          d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z">
-        </path>
-      </svg>
-    </div>
-  </button>
 
-  <!-- Fixed width panel -->
-  <div id="cartPanel"
-    class="absolute right-0 mt-2 z-50 w-[400px] h-[80vh] bg-[#181111] text-white shadow-xl rounded-xl p-4 overflow-y-auto hidden">
-    <h2 class="text-xl font-bold mb-4">Your Cart</h2>
-    <!-- <p class="text-sm text-gray-400">Cart is currently empty.</p> -->
-     <div id="cartContent" class="flex-1 overflow-y-auto space-y-4">
-    <p class="text-sm text-gray-400">Cart is currently empty.</p>
-  </div>
-
-    <div class="pt-4 border-t border-[#2e1e1e] mt-4 flex justify-between items-center">
-    <div id="cartTotal" class="text-lg font-bold">$0.00</div>
-    <button id="buyButton"
-      class="bg-gradient-to-r from-[#38b000] to-[#008000] hover:from-[#45c100] hover:to-[#009900] text-white font-bold py-2 px-6 rounded-xl shadow-md transition-transform duration-300 hover:scale-105">
-      Buy
-    </button>
-  </div>
-  </div>
-</div>
-
-
+              <div class="relative">
+                <button id="cartToggleButton"
+                  class="flex cursor-pointer items-center justify-center rounded-lg h-10 bg-[#382929] text-white gap-2 text-sm font-bold px-4">
+                  <div class="text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                      <path
+                        d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z">
+                      </path>
+                    </svg>
+                  </div>
+                </button>
+              
+                <div id="cartPanel"
+                class="absolute right-0 mt-2 z-50 w-[400px] h-[80vh] bg-[#181111] text-white shadow-xl rounded-xl p-4 hidden flex flex-col">
+              
+                <h2 class="text-xl font-bold mb-4">Your Cart</h2>
+              
+                <div class="flex flex-col flex-1 overflow-hidden">
+                  <div id="cartContent" class="overflow-y-auto space-y-4 pr-2 flex-1">
+                  </div>
+                
+                  <div class="pt-4 border-t border-[#2e1e1e] mt-4 flex justify-between items-center">
+                    <div id="cartTotal" class="text-lg font-bold">$0.00</div>
+                    <button id="buyButton"
+                      class="bg-gradient-to-r from-[#38b000] to-[#008000] hover:from-[#45c100] hover:to-[#009900] text-white font-bold py-2 px-6 rounded-xl shadow-md transition-transform duration-300 hover:scale-105">
+                      Buy
+                    </button>
+                  </div>
+                </div>
+              </div>
+              
           </div>
         </header>
         <div class="px-40 flex flex-1 justify-center py-5">
           <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
             <h2 class="text-white tracking-light text-[28px] font-bold leading-tight px-4 text-left pb-3 pt-5">Black Market</h2>
-                <!-- Category Tabs -->
                 <div class="pb-3">
                   <div id="categoryTabs" class="flex border-b border-[#533c3c] px-4 gap-8"></div>
                 </div>
 
-                <!-- Items Display Container -->
                 <div class="max-h-[540px] overflow-y-auto custom-scrollbar">
                   <div class="p-4">
                     <div id="itemsContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
-                      <!-- Items will be injected here -->
                     </div>
                   </div>
                 </div>
@@ -117,7 +114,7 @@
     </div>
     </div>
     </div>
-    <!-- </div> -->
+   </div>
   </body>
 <script src="script.js"></script>
 </html>
