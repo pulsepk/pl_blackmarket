@@ -3,7 +3,7 @@ game 'gta5'
 
 description 'Black Market Script'
 author 'PulseScripts'
-version '1.0.0'
+version '1.0.1'
 
 description 'Black Market Script by PulseScripts https://discord.gg/72Y7WKsP9M'
 

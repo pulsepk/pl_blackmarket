@@ -41,7 +41,7 @@ function debug(msg)
     end
 end
 
-lib.callback.register('checkPlayerFunds', function(source, total)
+lib.callback.register('pl_blackmarket:checkPlayerFunds', function(source, total)
     if Config.Framework == "esx" then
         local xPlayer = ESX.GetPlayerFromId(source)
         return xPlayer.getAccount(Config.Account).money >= total
@@ -52,7 +52,7 @@ lib.callback.register('checkPlayerFunds', function(source, total)
     return false
 end)
 
-RegisterNetEvent('blackmarket:server:purchaseItems', function(cart, total)
+RegisterNetEvent('pl_blackmarket:server:purchaseItems', function(cart, total)
     local src = source
 
     local player, money, removeMoney, addItem
@@ -112,7 +112,7 @@ RegisterNetEvent('blackmarket:server:purchaseItems', function(cart, total)
 end)
 
 
-RegisterNetEvent("blackmarket:OpenUI", function()
+RegisterNetEvent("pl_blackmarket:OpenUI", function()
     for categoryKey, categoryData in pairs(Config.Categories) do
         products[categoryData.label] = {}
 
@@ -128,7 +128,7 @@ RegisterNetEvent("blackmarket:OpenUI", function()
             })
         end
     end
-    TriggerClientEvent("blackmarket:client:open", source, products)
+    TriggerClientEvent("pl_blackmarket:client:open", source, products)
 end)
 
 local WaterMark = function()

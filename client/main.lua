@@ -6,7 +6,7 @@ RegisterNUICallback('buyItems', function(data, cb)
     local cart = data.cart
     local total = data.total
 
-    lib.callback('checkPlayerFunds', src, function(canAfford)
+    lib.callback('pl_blackmarket:checkPlayerFunds', src, function(canAfford)
         if not canAfford then
             cb({ status = 'error' })
             lib.notify({
@@ -17,7 +17,7 @@ RegisterNUICallback('buyItems', function(data, cb)
 
             return
         end
-        TriggerServerEvent('blackmarket:server:purchaseItems', cart, total)
+        TriggerServerEvent('pl_blackmarket:server:purchaseItems', cart, total)
         cb({ status = 'ok' })
     end, total)
 end)
@@ -27,9 +27,9 @@ RegisterNUICallback('hideFrame', function(data, cb)
 end)
 
 function OpenBlackMarket()
-    TriggerServerEvent("blackmarket:OpenUI")
+    TriggerServerEvent("pl_blackmarket:OpenUI")
 end
-RegisterNetEvent("blackmarket:client:open", function(products)
+RegisterNetEvent("pl_blackmarket:client:open", function(products)
     SendNUIMessage({
         action = 'showUI',
         products = products
