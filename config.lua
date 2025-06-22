@@ -1,6 +1,6 @@
 Config = {}
 
-Config.Framework = "esx" -- "esx" or "qb"
+Config.Framework = "esx" -- "esx" ,"qb", "qbox"
 
 Config.Interaction = "ox-target" -- "ox-target","qb-target","textui"
 
@@ -9,10 +9,12 @@ Config.WaterMark = true -- Set to false to disable watermark
 Config.Debug = false -- Set to true to enable debug messages
 
 --ESX options: "bank", "cash", "black_money" 
---QBCore options: "bank", "cash"
---QBox options: "bank", "cash"
+--QBCore options: "bank", "cash", "black_money" | black_money Works with https://github.com/MH-Scripts/mh-cashasitem
+--QBox options: "bank", "cash", "black_money"
 
-Config.Account = "cash" 
+Config.Account = "black_money" 
+
+Config.BlackListedJob = {'police'}
 
 Config.Categories = {
     pistols = {

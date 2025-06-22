@@ -41,6 +41,38 @@ function debug(msg)
     end
 end
 
+local function GetPlayerJob(source)
+    local jobName = nil
+
+    if Config.Framework == "esx" then
+        local xPlayer = ESX.GetPlayerFromId(source)
+        if xPlayer and xPlayer.job then
+            jobName = xPlayer.job.name
+        end
+    elseif Config.Framework == "qb" then
+        local Player = QBCore.Functions.GetPlayer(source)
+        if Player then
+            jobName = Player.PlayerData.job.name
+        end
+    elseif Config.Framework == "qbox" then
+        local Player = exports.qbx_core:GetPlayer(source)
+        if Player then
+            jobName = Player.PlayerData.job.name
+        end
+    end
+
+    return jobName
+end
+
+local function IsJobBlacklisted(job)
+    for _, blacklisted in ipairs(Config.BlackListedJob) do
+        if job == blacklisted then
+            return true
+        end
+    end
+    return false
+end
+
 lib.callback.register('pl_blackmarket:checkPlayerFunds', function(source, total)
     if Config.Framework == "esx" then
         local xPlayer = ESX.GetPlayerFromId(source)
@@ -48,6 +80,12 @@ lib.callback.register('pl_blackmarket:checkPlayerFunds', function(source, total)
     elseif Config.Framework == "qb" then
         local Player = QBCore.Functions.GetPlayer(source)
         return Player.Functions.GetMoney(Config.Account) >= total
+    elseif Config.Framework == "qbox" then
+        if Config.Account == "black_money" then
+            return exports.ox_inventory:GetItemCount(source, "black_money") >= total
+        else
+            return exports.qbx_core:GetMoney(source, Config.Account) >= total
+        end
     end
     return false
 end)
@@ -64,7 +102,7 @@ RegisterNetEvent('pl_blackmarket:server:purchaseItems', function(cart, total)
             player.removeAccountMoney(Config.Account, amount)
         end
         addItem = function(name, quantity)
-            if GetResourceState(resourceName) == 'started' then
+            if GetResourceState('ox_inventory') == 'started' then
                 exports.ox_inventory:AddItem(src, name, quantity)
             else
                 player.addInventoryItem(name, quantity)
@@ -78,19 +116,29 @@ RegisterNetEvent('pl_blackmarket:server:purchaseItems', function(cart, total)
             player.Functions.RemoveMoney(Config.Account, amount)
         end
         addItem = function(name, quantity)
-            if GetResourceState(resourceName) == 'started' then
+            if GetResourceState('ox_inventory') == 'started' then
                 exports.ox_inventory:AddItem(src, name, quantity)
             else
                 player.Functions.AddItem(name, quantity)
             end
         end
+    elseif Config.Framework == "qbox" then
+        player = exports.qbx_core:GetPlayer(src)
+        money = exports.qbx_core:GetMoney(src, Config.Account)
+        removeMoney = function(amount)
+            if Config.Account == "black_money" then
+                exports.ox_inventory:RemoveItem(src, "black_money", amount,false)
+            else
+                exports.qbx_core:RemoveMoney(src, Config.Account, amount, "Black Market Purchase")
+            end
+        end
+        addItem = function(name, quantity)
+            if GetResourceState('ox_inventory') == 'started' then
+                exports.ox_inventory:AddItem(src, name, quantity)
+            end
+        end
     else
         debug("[Blackmarket] Unknown framework configured.")
-        return
-    end
-
-    if money < total then
-        debug(("[Blackmarket] Player %s tried to purchase without enough money."):format(src))
         return
     end
 
@@ -113,6 +161,18 @@ end)
 
 
 RegisterNetEvent("pl_blackmarket:OpenUI", function()
+    local src = source
+    local job = GetPlayerJob(src)
+
+    if IsJobBlacklisted(job) then
+        local data = {
+            title = 'Black Market',
+            description = 'Access denied for blacklisted job',
+            type = 'error'
+        }
+        TriggerClientEvent('ox_lib:notify', source, data)
+        return
+    end
     for categoryKey, categoryData in pairs(Config.Categories) do
         products[categoryData.label] = {}
 

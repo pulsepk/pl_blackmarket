@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   </head>
   <body>
     <div id="ui" style="display: none;">
@@ -73,25 +75,24 @@
                   </div>
                 </button>
               
-                <div id="cartPanel"
-                class="absolute right-0 mt-2 z-50 w-[400px] h-[80vh] bg-[#181111] text-white shadow-xl rounded-xl p-4 hidden flex flex-col">
-              
-                <h2 class="text-xl font-bold mb-4">Your Cart</h2>
-              
-                <div class="flex flex-col flex-1 overflow-hidden">
-                  <div id="cartContent" class="overflow-y-auto space-y-4 pr-2 flex-1">
-                  </div>
-                
-                  <div class="pt-4 border-t border-[#2e1e1e] mt-4 flex justify-between items-center">
-                    <div id="cartTotal" class="text-lg font-bold pt-1">$0.00</div>
-
-                    <button id="buyButton"
-                      class="bg-gradient-to-r from-[#ff416c] to-[#ff4b2b] hover:from-[#ff4b2b] hover:to-[#ff416c] text-white font-bold py-2 px-6 rounded-xl shadow-md transition-transform duration-300 hover:scale-105 mb-2">
-                      Buy
-                    </button>
-                  </div>
-                </div>
+            <div id="cartPanel" class="absolute right-0 top-0 mt-8 z-50 w-[400px] h-[80vh] bg-[#181111] text-white shadow-xl rounded-xl p-4 hidden flex flex-col justify-between">
+              <h2 class="text-xl font-bold mb-4">Your Cart</h2>
+              <div id="cartContent" class="overflow-y-auto space-y-4 pr-2 flex-1">
               </div>
+            
+              <div class="border-t border-[#2e1e1e] mt-0 pt-1 flex justify-between items-center">
+              <div id="cartTotal" class="text-lg font-bold">$0.00</div>
+              
+              <button id="buyButton"
+                      class="bg-gradient-to-r from-[#ff416c] to-[#ff4b2b] hover:from-[#ff4b2b] hover:to-[#ff416c] text-white font-bold py-2 px-6 rounded-xl shadow-md transition-transform duration-300 hover:scale-105">
+                Buy
+              </button>
+            </div>
+
+
+
+</div>
+
           </div>
         </header>
         <div class="px-40 flex flex-1 justify-center py-5">
