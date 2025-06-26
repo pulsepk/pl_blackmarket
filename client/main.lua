@@ -17,7 +17,7 @@ RegisterNUICallback('buyItems', function(data, cb)
 
             return
         end
-        TriggerServerEvent('pl_blackmarket:server:purchaseItems', cart, total)
+        TriggerServerEvent('pl_blackmarket:server:purchaseItems', cart)
         cb({ status = 'ok' })
     end, total)
 end)

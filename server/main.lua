@@ -90,11 +90,10 @@ lib.callback.register('pl_blackmarket:checkPlayerFunds', function(source, total)
     return false
 end)
 
-RegisterNetEvent('pl_blackmarket:server:purchaseItems', function(cart, total)
+RegisterNetEvent('pl_blackmarket:server:purchaseItems', function(cart)
     local src = source
-
+    local totalPrice = 0
     local player, money, removeMoney, addItem
-
     if Config.Framework == "esx" then
         player = ESX.GetPlayerFromId(src)
         money = player.getAccount(Config.Account).money
@@ -122,12 +121,13 @@ RegisterNetEvent('pl_blackmarket:server:purchaseItems', function(cart, total)
                 player.Functions.AddItem(name, quantity)
             end
         end
+
     elseif Config.Framework == "qbox" then
         player = exports.qbx_core:GetPlayer(src)
         money = exports.qbx_core:GetMoney(src, Config.Account)
         removeMoney = function(amount)
             if Config.Account == "black_money" then
-                exports.ox_inventory:RemoveItem(src, "black_money", amount,false)
+                exports.ox_inventory:RemoveItem(src, "black_money", amount, false)
             else
                 exports.qbx_core:RemoveMoney(src, Config.Account, amount, "Black Market Purchase")
             end
@@ -138,26 +138,55 @@ RegisterNetEvent('pl_blackmarket:server:purchaseItems', function(cart, total)
             end
         end
     else
-        debug("[Blackmarket] Unknown framework configured.")
+        print("[Blackmarket] Unknown framework configured.")
         return
     end
 
-    removeMoney(total)
-    debug(("[Blackmarket] Removed $%s from Player %s"):format(total, src))
-
     for itemName, itemData in pairs(cart) do
-        local quantity = tonumber(itemData.quantity)
-        if quantity and quantity > 0 then
-            if currentStock[itemName] and currentStock[itemName] >= quantity then
-                currentStock[itemName] = currentStock[itemName] - quantity
-                addItem(itemName, quantity)
-                debug(("[Blackmarket] Removed %s from stock of item '%s'"):format(quantity, itemName))
+        local quantity = tonumber(itemData.quantity) or 0
+        if quantity > 0 then
+            local itemConfig = nil
+            for _, category in pairs(Config.Categories) do
+                for _, item in pairs(category.items) do
+                    if item.name == itemName then
+                        itemConfig = item
+                        break
+                    end
+                end
+                if itemConfig then break end
+            end
+            if itemConfig then
+                if currentStock[itemName] and currentStock[itemName] >= quantity then
+                    local itemPrice = itemConfig.price * quantity
+                    totalPrice = totalPrice + itemPrice
+                else
+                    print(("[Blackmarket] Not enough stock for '%s'"):format(itemName))
+                    return
+                end
             else
-                debug(("[Blackmarket] Not enough stock to remove %s of '%s'"):format(quantity, itemName))
+                print(("[Blackmarket] Invalid item in cart: '%s'"):format(itemName))
+                return
             end
         end
     end
+    if money < totalPrice then
+        print(("[Blackmarket] Player %s tried to purchase for $%s but only has $%s"):format(src, totalPrice, money))
+        return
+    end
+
+    removeMoney(totalPrice)
+    print(("[Blackmarket] Charged $%s from Player %s"):format(totalPrice, src))
+
+    for itemName, itemData in pairs(cart) do
+        local quantity = tonumber(itemData.quantity)
+        if quantity and quantity > 0 and currentStock[itemName] then
+            currentStock[itemName] = currentStock[itemName] - quantity
+            addItem(itemName, quantity)
+            print(("[Blackmarket] Gave %sx '%s' to Player %s"):format(quantity, itemName, src))
+        end
+    end
 end)
+
 
 
 RegisterNetEvent("pl_blackmarket:OpenUI", function()
