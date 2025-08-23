@@ -26,7 +26,7 @@ Can use black money or any other account to buy items.
 
 ######
 ## Support, Scripts & More
-- [Script Store](https://pulsescripts.tebex.io/)
+- [Script Store](https://pulsescripts.com/)
 - [Join the Discord For Support](https://discord.gg/c6gXmtEf3H)
 ######
 
@@ -36,15 +36,15 @@ Can use black money or any other account to buy items.
 ## Paid Scripts
 If you liked our free scripts and want to contribute, please check out our paid scripts
 
-* 🍔 [BurgerShot](https://pulsescripts.tebex.io/package/6707919)
-* 🐱 [UwU Cat Cafe](https://pulsescripts.tebex.io/package/6706174)
-* 🍕 [Pizza This](https://pulsescripts.tebex.io/package/6707931)
-* ☕ [Bean Machine](https://pulsescripts.tebex.io/package/6741732)
-* 💊 [Drug Selling](https://pulsescripts.tebex.io/package/6668084)
-* 🌮 [Taco](https://pulsescripts.tebex.io/package/6707937)
-* 🐚 [Pearls](https://pulsescripts.tebex.io/package/6707935)
-* 🍔 [Horny Burgers](https://pulsescripts.tebex.io/package/6731403)
-* 🚀 [UpnAtom](https://pulsescripts.tebex.io/package/6749404)
-* 🍩 [Rusty Browns](https://pulsescripts.tebex.io/package/6707942)
-* 🍬 [Bubble Gum Cafe](https://pulsescripts.tebex.io/package/6707950)
-* 🛑 [Wheel Clamper](https://pulsescripts.tebex.io/package/6805299)
+* 🍔 [BurgerShot](https://pulsescripts.com/product/burgershot)
+* 🐱 [UwU Cat Cafe](https://pulsescripts.com/product/uwucatcafe)
+* 🍕 [Pizza This](https://pulsescripts.com/category/2908044)
+* ☕ [Bean Machine](https://pulsescripts.com/category/2908044)
+* 💊 [Drug Selling](https://pulsescripts.com/product/drugsellingv2)
+* 🌮 [Taco](https://pulsescripts.com/category/2908044)
+* 🐚 [Pearls](https://pulsescripts.com/category/2908044)
+* 🍔 [Horny Burgers](https://pulsescripts.com/category/2908044)
+* 🚀 [UpnAtom](https://pulsescripts.com/category/2908044)
+* 🍩 [Rusty Browns](https://pulsescripts.com/category/2908044)
+* 🍬 [Bubble Gum Cafe](https://pulsescripts.com/category/2908044)
+* 🛑 [Wheel Clamper](https://pulsescripts.com/category/2908044)
