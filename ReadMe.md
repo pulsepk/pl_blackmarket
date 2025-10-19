@@ -36,15 +36,19 @@ Can use black money or any other account to buy items.
 ## Paid Scripts
 If you liked our free scripts and want to contribute, please check out our paid scripts
 
+* 🎃 [Halloween](https://pulsescripts.com/product/6516858)
+* 🛑 [Wheel Clamper](https://pulsescripts.com/product/6805299)
+* 💊 [Drug Selling](https://pulsescripts.com/product/drugsellingv2)
+
 * 🍔 [BurgerShot](https://pulsescripts.com/product/burgershot)
 * 🐱 [UwU Cat Cafe](https://pulsescripts.com/product/uwucatcafe)
-* 🍕 [Pizza This](https://pulsescripts.com/category/2908044)
-* ☕ [Bean Machine](https://pulsescripts.com/category/2908044)
-* 💊 [Drug Selling](https://pulsescripts.com/product/drugsellingv2)
-* 🌮 [Taco](https://pulsescripts.com/category/2908044)
-* 🐚 [Pearls](https://pulsescripts.com/category/2908044)
-* 🍔 [Horny Burgers](https://pulsescripts.com/category/2908044)
-* 🚀 [UpnAtom](https://pulsescripts.com/category/2908044)
-* 🍩 [Rusty Browns](https://pulsescripts.com/category/2908044)
-* 🍬 [Bubble Gum Cafe](https://pulsescripts.com/category/2908044)
-* 🛑 [Wheel Clamper](https://pulsescripts.com/category/2908044)
+* 🍕 [Pizza This](https://pulsescripts.com/product/6707931)
+* ☕ [Bean Machine](https://pulsescripts.com/product/6741732)
+* 🌮 [Taco Farmer](https://pulsescripts.com/product/6707937)
+* 🐚 [Pearls](https://pulsescripts.com/product/6707935)
+* 🍔 [UpN Atom + Horny Burgers](https://pulsescripts.com/product/6749404)
+* 🐟 [KOI](https://pulsescripts.com/product/6994012)
+* 🍽️ [Diner](https://pulsescripts.com/product/7007587)
+* 🍩 [Rusty Browns](https://pulsescripts.com/product/6707942)
+* 🍬 [Bubble Gum Cafe](https://pulsescripts.com/product/6707950)
+
