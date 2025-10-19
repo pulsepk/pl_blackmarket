@@ -124,7 +124,11 @@ RegisterNetEvent('pl_blackmarket:server:purchaseItems', function(cart)
 
     elseif Config.Framework == "qbox" then
         player = exports.qbx_core:GetPlayer(src)
-        money = exports.qbx_core:GetMoney(src, Config.Account)
+        if Config.Account == "black_money" then
+            money = exports.ox_inventory:GetItem(src, Config.Account, false, true)
+        else
+            money = exports.qbx_core:GetMoney(src, Config.Account)
+        end
         removeMoney = function(amount)
             if Config.Account == "black_money" then
                 exports.ox_inventory:RemoveItem(src, "black_money", amount, false)
