@@ -2,11 +2,13 @@
 local resourceName = 'pl_blackmarket'
 lib.versionCheck('pulsepk/pl_blackmarket')
 
+local Framework = GetFramework()
+
 local QBCore, ESX = nil, nil
 
-if Config.Framework == "qb" then
+if Framework == "qb" then
     QBCore = exports['qb-core']:GetCoreObject()
-elseif Config.Framework == "esx" then
+elseif Framework == "esx" then
     ESX = exports['es_extended']:getSharedObject()
 end
 
@@ -44,17 +46,17 @@ end
 local function GetPlayerJob(source)
     local jobName = nil
 
-    if Config.Framework == "esx" then
+    if Framework == "esx" then
         local xPlayer = ESX.GetPlayerFromId(source)
         if xPlayer and xPlayer.job then
             jobName = xPlayer.job.name
         end
-    elseif Config.Framework == "qb" then
+    elseif Framework == "qb" then
         local Player = QBCore.Functions.GetPlayer(source)
         if Player then
             jobName = Player.PlayerData.job.name
         end
-    elseif Config.Framework == "qbox" then
+    elseif Framework == "qbox" then
         local Player = exports.qbx_core:GetPlayer(source)
         if Player then
             jobName = Player.PlayerData.job.name
@@ -74,13 +76,13 @@ local function IsJobBlacklisted(job)
 end
 
 lib.callback.register('pl_blackmarket:checkPlayerFunds', function(source, total)
-    if Config.Framework == "esx" then
+    if Framework == "esx" then
         local xPlayer = ESX.GetPlayerFromId(source)
         return xPlayer.getAccount(Config.Account).money >= total
-    elseif Config.Framework == "qb" then
+    elseif Framework == "qb" then
         local Player = QBCore.Functions.GetPlayer(source)
         return Player.Functions.GetMoney(Config.Account) >= total
-    elseif Config.Framework == "qbox" then
+    elseif Framework == "qbox" then
         if Config.Account == "black_money" then
             return exports.ox_inventory:GetItemCount(source, "black_money") >= total
         else
@@ -94,7 +96,7 @@ RegisterNetEvent('pl_blackmarket:server:purchaseItems', function(cart)
     local src = source
     local totalPrice = 0
     local player, money, removeMoney, addItem
-    if Config.Framework == "esx" then
+    if Framework == "esx" then
         player = ESX.GetPlayerFromId(src)
         money = player.getAccount(Config.Account).money
         removeMoney = function(amount)
@@ -108,7 +110,7 @@ RegisterNetEvent('pl_blackmarket:server:purchaseItems', function(cart)
             end
         end
 
-    elseif Config.Framework == "qb" then
+    elseif Framework == "qb" then
         player = QBCore.Functions.GetPlayer(src)
         money = player.Functions.GetMoney(Config.Account)
         removeMoney = function(amount)
@@ -122,7 +124,7 @@ RegisterNetEvent('pl_blackmarket:server:purchaseItems', function(cart)
             end
         end
 
-    elseif Config.Framework == "qbox" then
+    elseif Framework == "qbox" then
         player = exports.qbx_core:GetPlayer(src)
         if Config.Account == "black_money" then
             money = exports.ox_inventory:GetItem(src, Config.Account, false, true)
