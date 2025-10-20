@@ -3,13 +3,14 @@ game 'gta5'
 
 description 'Black Market Script'
 author 'PulseScripts'
-version '1.0.5'
+version '1.0.6'
 
 description 'Black Market Script by PulseScripts https://discord.gg/72Y7WKsP9M'
 
 shared_scripts {
     '@ox_lib/init.lua',
-    'config.lua'
+    'shared/autodetect.lua',
+    'shared/config.lua'
 }
 
 client_script 'client/main.lua'
