@@ -2,8 +2,8 @@ fx_version 'cerulean'
 game 'gta5'
 
 description 'Black Market Script'
-author 'PulseScripts'
-version '1.0.6'
+author 'PulseScripts - pulsescripts.com'
+version '1.0.7'
 
 description 'Black Market Script by PulseScripts https://discord.gg/72Y7WKsP9M'
 
