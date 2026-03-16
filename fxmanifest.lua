@@ -3,7 +3,7 @@ game 'gta5'
 
 description 'Black Market Script'
 author 'PulseScripts - pulsescripts.com'
-version '1.0.7'
+version '1.1.0'
 
 description 'Black Market Script by PulseScripts https://discord.gg/72Y7WKsP9M'
 
@@ -14,7 +14,11 @@ shared_scripts {
 }
 
 client_script 'client/main.lua'
-server_script 'server/main.lua'
+
+server_script {
+    'server/main.lua',
+    'server/location.lua'
+}
 
 dependencies {
     'ox_lib',
