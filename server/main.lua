@@ -15,7 +15,6 @@ end
 local currentStock = {}
 local products = {}
 
-
 if GetResourceState('ox_inventory') == 'started' then
     ImagesPath = 'ox_inventory/web/images/'
 elseif GetResourceState('qs-inventory') == 'started' then
@@ -37,11 +36,6 @@ else
     ImagesPath = 'ox_inventory/web/images/'
 end
 
-function debug(msg)
-    if Config.Debug then
-        print(msg)
-    end
-end
 
 local function GetPlayerJob(source)
     local jobName = nil
@@ -144,7 +138,7 @@ RegisterNetEvent('pl_blackmarket:server:purchaseItems', function(cart)
             end
         end
     else
-        print("[Blackmarket] Unknown framework configured.")
+        Config.DebugPrint("Unknown framework configured.")
         return
     end
 
@@ -166,40 +160,45 @@ RegisterNetEvent('pl_blackmarket:server:purchaseItems', function(cart)
                     local itemPrice = itemConfig.price * quantity
                     totalPrice = totalPrice + itemPrice
                 else
-                    print(("[Blackmarket] Not enough stock for '%s'"):format(itemName))
+                    Config.DebugPrint(("Not enough stock for '%s'"):format(itemName))
                     return
                 end
             else
-                print(("[Blackmarket] Invalid item in cart: '%s'"):format(itemName))
+                Config.DebugPrint(("Invalid item in cart: '%s'"):format(itemName))
                 return
             end
         end
     end
     if money < totalPrice then
-        print(("[Blackmarket] Player %s tried to purchase for $%s but only has $%s"):format(src, totalPrice, money))
+        Config.DebugPrint(("Player %s tried to purchase for $%s but only has $%s"):format(src, totalPrice, money))
         return
     end
 
     removeMoney(totalPrice)
-    print(("[Blackmarket] Charged $%s from Player %s"):format(totalPrice, src))
+    Config.DebugPrint(("Charged $%s from Player %s"):format(totalPrice, src))
 
     for itemName, itemData in pairs(cart) do
         local quantity = tonumber(itemData.quantity)
         if quantity and quantity > 0 and currentStock[itemName] then
             currentStock[itemName] = currentStock[itemName] - quantity
             addItem(itemName, quantity)
-            print(("[Blackmarket] Gave %sx '%s' to Player %s"):format(quantity, itemName, src))
+            Config.DebugPrint(("Gave %sx '%s' to Player %s"):format(quantity, itemName, src))
         end
     end
 end)
 
-
-
 RegisterNetEvent("pl_blackmarket:OpenUI", function()
     local src = source
+
+    if not IsPlayerNearBlackMarket(src) then
+        Config.DebugPrint(("Player %s tried to open UI but is not near any blackmarket ped"):format(src))
+        return
+    end
+
     local job = GetPlayerJob(src)
 
     if IsJobBlacklisted(job) then
+        Config.DebugPrint(("Player %s denied access — blacklisted job: %s"):format(src, tostring(job)))
         local data = {
             title = 'Black Market',
             description = 'Access denied for blacklisted job',
@@ -208,6 +207,8 @@ RegisterNetEvent("pl_blackmarket:OpenUI", function()
         TriggerClientEvent('ox_lib:notify', source, data)
         return
     end
+
+    Config.DebugPrint(("Player %s opened the Black Market UI"):format(src))
     for categoryKey, categoryData in pairs(Config.Categories) do
         products[categoryData.label] = {}
 
