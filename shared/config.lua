@@ -6,7 +6,15 @@ Config.Interaction = "ox-target" -- "ox-target","qb-target","textui"
 
 Config.WaterMark = true -- Set to false to disable watermark
 
-Config.Debug = false -- Set to true to enable debug messages
+Config.Debug = {
+    Prints = false -- Set to true to enable debug prints
+}
+
+function Config.DebugPrint(message)
+    if Config.Debug.Prints then
+        print('[pl_blackmarket] ' .. message)
+    end
+end
 
 --ESX options: "bank", "cash", "black_money" 
 --QBCore options: "bank", "cash", "black_money" | black_money Works with https://github.com/MH-Scripts/mh-cashasitem
@@ -49,11 +57,4 @@ Config.Categories = {
 
 }
 
-Config.BlackMarket = {
-    [1] = {
-        ped = 'a_m_m_og_boss_01',
-        coords = vector3(-939.8207, -1075.2236, 2.1503),
-		heading = 213.8993
-    },
-    -- Add More
-}
+-- BlackMarket ped locations are defined server-side only (server/main.lua)

@@ -27,6 +27,7 @@ RegisterNUICallback('hideFrame', function(data, cb)
 end)
 
 function OpenBlackMarket()
+    Config.DebugPrint("Requesting Black Market UI from server")
     TriggerServerEvent("pl_blackmarket:OpenUI")
 end
 RegisterNetEvent("pl_blackmarket:client:open", function(products)
@@ -46,6 +47,7 @@ function StartPoint(data, index)
     SetEntityInvincible(ped, true)
     SetBlockingOfNonTemporaryEvents(ped, true)
     spawnedPeds[index] = ped
+    Config.DebugPrint(("Spawned blackmarket ped [%s] model '%s'"):format(index, data.ped))
 
     if Config.Interaction == 'ox-target' then
         exports.ox_target:addLocalEntity(ped, {
@@ -110,20 +112,20 @@ function StartPoint(data, index)
     end
 end
 
-CreateThread(function()
-    while true do
-        Wait(2000)
-        local playerCoords = GetEntityCoords(PlayerPedId())
-
-        for index, data in pairs(Config.BlackMarket) do
-            local dist = #(data.coords - playerCoords)
-
-            if dist < 200 and not spawnedPeds[index] then
-                StartPoint(data, index)
-            elseif dist >= 200 and spawnedPeds[index] then
-                DeletePed(spawnedPeds[index])
-                spawnedPeds[index] = nil
+RegisterNetEvent('pl_blackmarket:client:syncPeds', function(nearbyPeds)
+    for index, ped in pairs(spawnedPeds) do
+        if not nearbyPeds[index] then
+            if DoesEntityExist(ped) then
+                DeletePed(ped)
             end
+            spawnedPeds[index] = nil
+            Config.DebugPrint(("Despawned blackmarket ped [%s]"):format(index))
+        end
+    end
+
+    for index, data in pairs(nearbyPeds) do
+        if not spawnedPeds[index] then
+            StartPoint(data, index)
         end
     end
 end)
