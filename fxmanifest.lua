@@ -1,27 +1,26 @@
 fx_version 'cerulean'
 game 'gta5'
 
-description 'Black Market Script'
 author 'PulseScripts - pulsescripts.com'
-version '1.1.0'
+version '1.2.0'
 
 description 'Black Market Script by PulseScripts https://discord.gg/72Y7WKsP9M'
 
 shared_scripts {
     '@ox_lib/init.lua',
-    'shared/autodetect.lua',
     'shared/config.lua'
 }
 
 client_script 'client/main.lua'
 
-server_script {
+server_scripts {
     'server/main.lua',
     'server/location.lua'
 }
 
 dependencies {
     'ox_lib',
+    'pl_lib',
 }
 
 lua54 'yes'

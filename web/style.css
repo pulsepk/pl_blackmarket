@@ -8,7 +8,6 @@
   margin: 60px auto;
 }
 
-
 @media (min-width: 2560px) and (max-width: 3839px) {
   .main {
     width: 1600px;
@@ -16,13 +15,14 @@
   }
 }
 
-
 @media (min-width: 3840px) {
   .main {
     width: 2000px;
     height: 1394px;
   }
 }
+
+/* Cart panel */
 #cartPanel {
   width: 400px;
   height: 80vh;
@@ -42,24 +42,51 @@
   }
 }
 
-.category-tab {
-    @apply flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#b89d9d] pb-[13px] pt-4 text-sm font-bold tracking-[0.015em];
-  }
-  .active-tab {
-    @apply border-b-white text-white;
-  }
+/* Cart item count badge */
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  pointer-events: none;
+  line-height: 1;
+}
 
+/* Category tabs */
+.category-tab {
+  @apply flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#b89d9d] pb-[13px] pt-4 text-sm font-bold tracking-[0.015em];
+}
+.active-tab {
+  @apply border-b-white text-white;
+}
+
+/* Scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
-
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 4px;
 }
-
 .custom-scrollbar::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
-
+/* Search input — remove browser default styling */
+#searchInput::-webkit-search-cancel-button {
+  display: none;
+}
+#searchInput:focus {
+  outline: none;
+  box-shadow: none;
+}

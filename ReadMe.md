@@ -14,10 +14,10 @@ Stock goes down when players buy items – live updates.
 Add as many locations as you want on the map.
 
 - ⚙️ Supports ESX, QBCore, and Qbox
-Works with all major frameworks.
+Works with all major frameworks — auto-detected via pl_lib.
 
 - 🎯 Interaction System Support
-Works with ox_target, qb-target, and lib.showTextUI.
+Works with ox_target, qb-target (auto-detected via pl_lib), and TextUI.
 
 - 🖼️ Automatic Item Images
 Just add an image in the script folder, no setup needed.
@@ -34,20 +34,22 @@ Can use black money or any other account to buy items.
 
 ## Dependencies
 - [ox_lib](https://github.com/overextended/ox_lib/releases)
+- [pl_lib](https://github.com/pulsepk/pl_lib/releases)
 
-## Paid Scripts
-If you liked our free scripts and want to contribute, please check out our paid scripts
+## 🛒 More Scripts from Pulse Scripts
 
-* 🍔 [BurgerShot](https://pulsescripts.com/product/burgershot)
-* 🐱 [UwU Cat Cafe](https://pulsescripts.com/product/uwucatcafe)
-* 🍕 [Pizza This](https://pulsescripts.com/product/6707931)
-* ☕ [Bean Machine](https://pulsescripts.com/product/6741732)
-* 🐟 [KOI](https://pulsescripts.com/product/6994012)
-* 🍽️ [Diner](https://pulsescripts.com/product/7007587)
-* 🌮 [Taco Farmer](https://pulsescripts.com/product/6707937)
-* 🐚 [Pearls](https://pulsescripts.com/product/6707935)
-* 🍔 [Horny Burgers + UpnAtom](https://pulsescripts.com/product/6749404)
-* 🍩 [Rusty Browns](https://pulsescripts.com/product/6707942)
-* 🍬 [Bubble Gum Cafe](https://pulsescripts.com/product/6707950)
-* 💊 [Drug Selling](https://pulsescripts.com/product/drugsellingv2)
-* 🛑 [Wheel Clamper](https://pulsescripts.com/product/6805299)
+| Script | Link |
+|--------|------|
+| 🍔 BurgerShot | [View](https://pulsescripts.com/product/burgershot) |
+| 🐱 UwU Cat Cafe | [View](https://pulsescripts.com/product/uwucatcafe) |
+| 🍕 Pizza This | [View](https://pulsescripts.com/product/6707931) |
+| ☕ Bean Machine | [View](https://pulsescripts.com/product/6741732) |
+| 🐟 KOI | [View](https://pulsescripts.com/product/6994012) |
+| 🍽️ Diner | [View](https://pulsescripts.com/product/7007587) |
+| 🌮 Taco Farmer | [View](https://pulsescripts.com/product/6707937) |
+| 🐚 Pearls | [View](https://pulsescripts.com/product/6707935) |
+| 🍔 Horny Burgers + UpnAtom | [View](https://pulsescripts.com/product/6749404) |
+| 🍩 Rusty Browns | [View](https://pulsescripts.com/product/6707942) |
+| 🍬 Bubble Gum Cafe | [View](https://pulsescripts.com/product/6707950) |
+| 💊 Drug Selling | [View](https://pulsescripts.com/product/drugsellingv2) |
+| 🛑 Wheel Clamper | [View](https://pulsescripts.com/product/6805299) |
